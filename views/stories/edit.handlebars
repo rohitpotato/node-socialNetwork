@@ -1,0 +1,57 @@
+<style>
+	
+	.input-field label {
+		pointer-events: auto;
+	}
+
+</style>
+<h1>Edit Story</h1>
+<div class = "row">
+	<form class="col s12" action="/stories/{{story.id}}?_method=PUT" method="POST">
+		<input type="hidden" name="_method" value="PUT">
+		<div class="row">
+			<div class="input-field">
+				<input type="text" name="title" value = "{{ story.title }}">
+				<label for="title">Title</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-field">
+				<select name="status">
+					{{#select story.status}}
+					<option value="public">Public</option>
+					<option value="private">Private</option>
+					<option value="unpublished">Unpublished</option>
+					{{/select}}
+				</select>
+				<label for="status">Visibility</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-field">
+				<p>
+					<input type="checkbox" id="checkboxid" name="allowComments" {{#if story.allowComments }} checked="checked" {{/if}}><label for="checkboxid">Allow Comments?</label>
+				</p>
+			
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-field">
+			  <h5>Tell us your story!</h5>
+				<textarea name="body" >{{ story.body }}</textarea>
+			
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-field">
+				<input type="submit" value="Save" class="btn">
+				<label for="title">Title</label>
+			</div>
+		</div>
+
+	</form>
+</div>  
